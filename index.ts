@@ -1,12 +1,13 @@
 import express , { Request , Response } from 'express' ;
-import { prisma } from './lib/prisma' ;
-import router from './router/router';
-const app = express() ; 
+import { prisma } from './src/lib/prisma' ;
+import router from './src/router/router';
+const app = express() ;
+const path = '0.0.0.0' ;  
 const port = 3000 ; 
 
 app.use( express.json() ) ;  
 app.use( '/api' , router ) ; 
 
-app.listen( port , () => {
+app.listen(  port , path , () => {
     console.log( "Started" ) ; 
 }) ; 

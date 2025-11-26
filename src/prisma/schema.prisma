@@ -13,12 +13,22 @@ datasource db {
   provider = "postgresql"
 }
 
-
 model User {
-  id Int @id @default(autoincrement()) 
-  firstName String 
-  lastName String
-  age Int ?
+  id Int @id @default( autoincrement() ) 
   email String @unique 
-  isMarried Boolean ? 
+  password String
+}
+
+model Project {
+  id Int @id @default( autoincrement() ) 
+  title String @unique
+  tasks Task[]  
+}
+
+model Task {
+  id Int @id @default( autoincrement() ) 
+  title String 
+  description String
+  projectId Int 
+  project Project @relation( fields : [ projectId ] , references: [ id ] )  
 }
