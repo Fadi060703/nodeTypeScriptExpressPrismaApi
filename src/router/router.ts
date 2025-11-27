@@ -3,13 +3,14 @@ import { createProject, getProjectById, getProjects } from '../controllers/proje
 import { createTask, getTaskById, getTasks } from '../controllers/tasksController';
 import { login, signUp } from '../controllers/authController';
 import { authMiddleware } from '../middlewares/auth';
-import { createTeam, getTeams } from '../controllers/teamsController';
+import { createTeam, getTeamById, getTeams } from '../controllers/teamsController';
 
 const router = express.Router() ;
 
 router.post( '/auth/signup' , signUp ) ; 
 router.post( '/auth/login' , login ) ;
 router.get( '/teams' , getTeams ) , 
+router.get( '/teams/:id' , getTeamById ) ,
 router.post( '/teams' , createTeam ) ,
 router.get( '/projects' , authMiddleware , getProjects ) ;
 router.get( '/projects/:id' , getProjectById ) ;

@@ -1,6 +1,11 @@
 import { z } from 'zod' ; 
 import { AccTypeSchema } from './accType';
 
+export const userGetSchema = z.object({
+    id : z.number().int() , 
+    email : z.email() 
+}) ;
+
 export const userCreateSchema = z.object({
     email : z.email() , 
     password : z.string().min( 8 , "Password must be 8 or more chars" ) ,
@@ -17,6 +22,7 @@ export const userUpdateSchema = z.object({
   setTeamIds : z.array(z.number().int().positive()).optional()
 }) ;  
 
+export type userGetSchemaDTO = z.infer< typeof userGetSchema > ;
 export type userCreateSchemaDTO = z.infer< typeof userCreateSchema > ;
 export type userUpdateSchemaDTO = z.infer< typeof userUpdateSchema >  ;
 
