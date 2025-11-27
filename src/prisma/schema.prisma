@@ -13,16 +13,32 @@ datasource db {
   provider = "postgresql"
 }
 
+enum AccType {
+  SUPERUSER 
+  DEFAULT
+}
+
 model User {
   id Int @id @default( autoincrement() ) 
   email String @unique 
   password String
+  accountType AccType 
+  team Team[] @relation( "UserTeams" ) 
+}
+
+model Team {
+  id Int @id @default( autoincrement() ) 
+  name String 
+  users User[] @relation( "UserTeams" ) 
+  projects Project[] 
 }
 
 model Project {
   id Int @id @default( autoincrement() ) 
   title String @unique
-  tasks Task[]  
+  tasks Task[]
+  teamId Int  
+  team Team @relation( fields : [ teamId ] , references : [ id ] ) 
 }
 
 model Task {

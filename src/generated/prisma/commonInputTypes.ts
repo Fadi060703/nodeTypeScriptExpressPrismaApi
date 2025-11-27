@@ -40,6 +40,13 @@ export type StringFilter<$PrismaModel = never> = {
   not?: Prisma.NestedStringFilter<$PrismaModel> | string
 }
 
+export type EnumAccTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.AccType | Prisma.EnumAccTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.AccType[] | Prisma.ListEnumAccTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AccType[] | Prisma.ListEnumAccTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAccTypeFilter<$PrismaModel> | $Enums.AccType
+}
+
 export type IntWithAggregatesFilter<$PrismaModel = never> = {
   equals?: number | Prisma.IntFieldRefInput<$PrismaModel>
   in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>
@@ -74,6 +81,16 @@ export type StringWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedStringFilter<$PrismaModel>
 }
 
+export type EnumAccTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AccType | Prisma.EnumAccTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.AccType[] | Prisma.ListEnumAccTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AccType[] | Prisma.ListEnumAccTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAccTypeWithAggregatesFilter<$PrismaModel> | $Enums.AccType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAccTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAccTypeFilter<$PrismaModel>
+}
+
 export type NestedIntFilter<$PrismaModel = never> = {
   equals?: number | Prisma.IntFieldRefInput<$PrismaModel>
   in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>
@@ -97,6 +114,13 @@ export type NestedStringFilter<$PrismaModel = never> = {
   startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
   endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
   not?: Prisma.NestedStringFilter<$PrismaModel> | string
+}
+
+export type NestedEnumAccTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.AccType | Prisma.EnumAccTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.AccType[] | Prisma.ListEnumAccTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AccType[] | Prisma.ListEnumAccTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAccTypeFilter<$PrismaModel> | $Enums.AccType
 }
 
 export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -141,6 +165,16 @@ export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedStringFilter<$PrismaModel>
   _max?: Prisma.NestedStringFilter<$PrismaModel>
+}
+
+export type NestedEnumAccTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AccType | Prisma.EnumAccTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.AccType[] | Prisma.ListEnumAccTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AccType[] | Prisma.ListEnumAccTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAccTypeWithAggregatesFilter<$PrismaModel> | $Enums.AccType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAccTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAccTypeFilter<$PrismaModel>
 }
 
 

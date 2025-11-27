@@ -9,7 +9,9 @@
 * 🟢 You can import this file directly.
 */
 
+export const AccType = {
+  SUPERUSER: 'SUPERUSER',
+  DEFAULT: 'DEFAULT'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type AccType = (typeof AccType)[keyof typeof AccType]
