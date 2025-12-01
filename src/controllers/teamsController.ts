@@ -4,9 +4,8 @@ import { createTeamSchema, getTeamSchema, getTeamsSchema } from "../validators/t
 import { z } from 'zod' ; 
 export const getTeams = async ( req : Request , res : Response ) => {
     try{
-        const data = await prisma.team.findMany({
-        }) ; 
-        const parsedData = z.array( getTeamSchema ).parse( data ) ; 
+        const data = await prisma.team.findMany({}) ; 
+        const parsedData = z.array( getTeamsSchema ).parse( data ) ; 
 
         res.status( 200 ).json( parsedData ) ; 
     }
@@ -15,17 +14,17 @@ export const getTeams = async ( req : Request , res : Response ) => {
     }
 }
 
+
 export const getTeamById = async ( req : Request , res : Response ) => {
     try {
         const id = parseInt( req.params.id , 10 ) ;
         const team = await prisma.team.findUnique({
             where : { id } ,
             include : {
-                users : true ,
                 projects : true 
             }
         }) ;
-        const parsed = getTeamsSchema.parse( team ) ;
+        const parsed = getTeamSchema.parse( team ) ;
         res.status( 200 ).json( parsed ) ; 
     } catch( err ) {
         res.status( 400 ).json( "Error" ) ;

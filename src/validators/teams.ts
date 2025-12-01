@@ -1,19 +1,19 @@
 import { z } from 'zod' ; 
-import { userGetSchema } from './user';
+
 import { getProjectSchema } from './projects';
+import { userGetSchema } from './user';
 
 
 
 export const getTeamsSchema = z.object({
   id: z.number().int().nonnegative(),
   name: z.string(),
-  users: z.array( userGetSchema ).default([]),
-  projects: z.array( getProjectSchema ).default([]),
 });
 
 export const getTeamSchema = z.object({
   id: z.number().int().nonnegative(),
-  name: z.string(),
+  name: z.string(), 
+  projects : z.array( getProjectSchema ) 
 });
 
 export const createTeamSchema = z.object({

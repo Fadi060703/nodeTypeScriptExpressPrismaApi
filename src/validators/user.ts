@@ -1,10 +1,19 @@
 import { z } from 'zod' ; 
 import { AccTypeSchema } from './accType';
+import { getTeamSchema, getTeamsSchema } from './teams';
 
 export const userGetSchema = z.object({
     id : z.number().int() , 
-    email : z.email() 
+    email : z.email() ,
+    accountType : AccTypeSchema , 
 }) ;
+
+export const userGetByIdSchema = z.object({
+  id : z.number().int() , 
+  email : z.email() ,
+  accountType : AccTypeSchema , 
+  team : z.array( getTeamsSchema ) 
+})
 
 export const userCreateSchema = z.object({
     email : z.email() , 
@@ -23,6 +32,7 @@ export const userUpdateSchema = z.object({
 }) ;  
 
 export type userGetSchemaDTO = z.infer< typeof userGetSchema > ;
+export type userGetByIdSchemaFTO = z.infer< typeof userGetByIdSchema > ;
 export type userCreateSchemaDTO = z.infer< typeof userCreateSchema > ;
 export type userUpdateSchemaDTO = z.infer< typeof userUpdateSchema >  ;
 
