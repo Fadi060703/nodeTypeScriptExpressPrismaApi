@@ -4,11 +4,10 @@ import jwt from 'jsonwebtoken' ;
 import { prisma } from "../lib/prisma" ; 
 import { JWT_SECRET , JWT_EXPIRES_IN , SALT_ROUNDS } from "../config/auth" ; 
 import { signUpSchema } from "../validators/auth" ;
-import { userCreateSchema } from "../validators/user";
 
 export const signUp = async ( req : Request , res : Response ) => {
     try{
-        const parsedData = userCreateSchema.parse( req.body ) ; 
+        const parsedData = signUpSchema.parse( req.body ) ; 
         const exist = await prisma.user.findUnique({
             where : { email : parsedData.email }  
         }) ; 
@@ -20,7 +19,7 @@ export const signUp = async ( req : Request , res : Response ) => {
             data : { email : parsedData.email , password : hashedPassword ,
                  accountType : parsedData.accountType ,
                 team : {
-                    connect : parsedData.teamIds?.map( id => ( { id } ))
+                    connect : parsedData.teams?.map( id => ( { id } ))
                 }
                 } 
         }) ; 

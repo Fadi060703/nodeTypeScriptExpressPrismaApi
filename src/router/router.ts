@@ -1,10 +1,7 @@
  import express from 'express' ; 
-import { createProject, getProjectById, getProjects } from '../controllers/projectsController';
-import { createTask, getTaskById, getTasks } from '../controllers/tasksController';
 import { login, signUp } from '../controllers/authController';
-import { authMiddleware } from '../middlewares/auth';
-import { createTeam, getTeamById, getTeams } from '../controllers/teamsController';
-import { getUsers, getUserById, updateUser, deleteUser } from '../controllers/userControllers';
+import { deleteUser, getUserById, getUsers, updateUser } from '../controllers/usersController';
+import { createTeam, deleteTeam, getTeam, getTeams, updateTeam } from '../controllers/teamsController';
 
 const router = express.Router() ;
 /* Auth */ 
@@ -12,25 +9,20 @@ router.post( '/auth/signup' , signUp ) ;
 router.post( '/auth/login' , login ) ;
 /* Auth */
 
-
+/* User Management */
 router.get( '/users' , getUsers ) ;
 router.get( '/users/:id' , getUserById ) ;
-router.patch( '/users/:id' , updateUser ) ;  
+router.patch( '/users/:id' , updateUser ) ;
 router.delete( '/users/:id' , deleteUser ) ;
+/* User Management */
 
-
-router.get( '/teams' , getTeams ) ; 
-router.get( '/teams/:id' , getTeamById ) ;
+/* Teams Management */
+router.get( '/teams' , getTeams ) ;
+router.get( '/teams/:id' , getTeam ) ;
 router.post( '/teams' , createTeam ) ;
+router.patch( '/teams/:id' , updateTeam ) ; 
+router.delete( '/teams/:id' , deleteTeam ) ; 
+/* Teams Management */
 
-
-router.get( '/projects' , getProjects ) ;
-router.get( '/projects/:id' , getProjectById ) ;
-router.post( '/projects' , createProject ) ;
-
-
-router.get( '/tasks' , getTasks ) ; 
-router.get( '/tasks/:id' , getTaskById ) ; 
-router.post( '/tasks' , createTask ) ; 
 
 export default router ; 

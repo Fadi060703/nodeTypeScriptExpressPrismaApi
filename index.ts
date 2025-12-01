@@ -1,5 +1,4 @@
 import express , { Request , Response } from 'express' ;
-import { prisma } from './src/lib/prisma' ;
 import router from './src/router/router';
 const app = express() ;
 const path = '0.0.0.0' ;  
