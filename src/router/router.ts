@@ -2,6 +2,7 @@
 import { login, signUp } from '../controllers/authController';
 import { deleteUser, getUserById, getUsers, updateUser } from '../controllers/usersController';
 import { createTeam, deleteTeam, getTeam, getTeams, updateTeam } from '../controllers/teamsController';
+import { createProject, getProjectById, getProjects } from '../controllers/projectsController';
 
 const router = express.Router() ;
 /* Auth */ 
@@ -24,5 +25,8 @@ router.patch( '/teams/:id' , updateTeam ) ;
 router.delete( '/teams/:id' , deleteTeam ) ; 
 /* Teams Management */
 
+router.get( '/projects' , getProjects ) ;
+router.post( '/projects' , createProject ) ;
+router.get( '/projects/:id' , getProjectById ) ;
 
 export default router ; 

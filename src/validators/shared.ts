@@ -11,3 +11,8 @@ export const baseTeamSchema = z.object({
   id: z.number().positive(),
   name: z.string(),
 });
+
+export const baseProjectSchema = z.object({
+  id : z.number().positive() , 
+  title : z.string() ,
+}) ;
