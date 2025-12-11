@@ -16,3 +16,8 @@ export const baseProjectSchema = z.object({
   id : z.number().positive() , 
   title : z.string() ,
 }) ;
+
+export const baseTaskSchema = z.object({
+  id : z.number().positive() , 
+  title : z.string().min( 3 ) ,
+}) ; 

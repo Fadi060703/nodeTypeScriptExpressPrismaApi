@@ -1,8 +1,9 @@
- import express from 'express' ; 
+import express from 'express' ; 
 import { login, signUp } from '../controllers/authController';
 import { deleteUser, getUserById, getUsers, updateUser } from '../controllers/usersController';
 import { createTeam, deleteTeam, getTeam, getTeams, updateTeam } from '../controllers/teamsController';
-import { createProject, getProjectById, getProjects } from '../controllers/projectsController';
+import { createProject, deleteProject, getProjectById, getProjects, updateProject } from '../controllers/projectsController';
+import { createTask, getTaskById, getTasks } from '../controllers/tasksController';
 
 const router = express.Router() ;
 /* Auth */ 
@@ -25,8 +26,22 @@ router.patch( '/teams/:id' , updateTeam ) ;
 router.delete( '/teams/:id' , deleteTeam ) ; 
 /* Teams Management */
 
+
+/* Projects Management */ 
 router.get( '/projects' , getProjects ) ;
 router.post( '/projects' , createProject ) ;
 router.get( '/projects/:id' , getProjectById ) ;
+router.patch( '/projects/:id' , updateProject ) ;
+router.delete( '/projects/:id' , deleteProject ) ;   
+/* Projects Management */ 
 
-export default router ; 
+
+/* Tasks Management */ 
+router.get( '/tasks' , getTasks ) ; 
+router.get( '/tasks/:id' , getTaskById ) ; 
+router.post( '/tasks' , createTask ) ;
+/* Tasks Management */ 
+
+
+
+export default router ;  
