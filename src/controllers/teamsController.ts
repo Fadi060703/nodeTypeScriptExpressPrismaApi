@@ -105,6 +105,6 @@ export const deleteTeam = async ( req : Request , res : Response ) => {
         res.status( 200 ).json( data ) ; 
     }
     catch( err ){
-        res.status( 400 ).json( "ERROR" ) ;
+        res.status( 400 ).json( {"ERROR" : err} ) ;
     }
 }
