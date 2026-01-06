@@ -1,9 +1,18 @@
-import express, { Request, Response } from 'express';
+import express, { Application, Request, Response } from 'express';
 import router from './src/router/router';
 import { getLocalExternalIPv4 } from './src/lib/getIPv4';
-const app = express();
-const path = '0.0.0.0';
-const port = 3000;
+import cors from "cors" ; 
+
+
+const app : Application = express();
+const path = 'localhost';
+const port = 8000;
+app.use( cors({
+    origin : [ 'http://127.0.0.1:3000' , 'http://localhost:3000' ] ,
+    credentials : true , 
+    methods : [ "GET" , "POST" , "PUT" , "PATCH" , "DELETE" , "OPTIONS" ] ,
+    allowedHeaders : [ "Content-Type" , "Authorization" , "Accept"] 
+}))
 
 app.use(express.json());
 app.use('/api', router);
